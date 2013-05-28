@@ -1,0 +1,17 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/07-Databases
+
+prod:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=78.24.217.78;dbname=timecreation
+      username: timecreation
+      password: dsYE954KKD5u8mZM
+dev:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=78.24.217.78;dbname=timecreation
+      username: timecreation
+      password: dsYE954KKD5u8mZM

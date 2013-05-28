@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="ru" datatype="plaintext" original="messages" date="2013-04-19T11:32:33Z" product-name="messages">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>Many Money</source>
+        <target>Time-Creation.ru</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>News list</source>
+        <target>Список новостей</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Editing news "%%name%%"</source>
+        <target>Редактирование новости "%%name%%"</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Create news</source>
+        <target>Создание новости</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Published</source>
+        <target>Дата публикации</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Username or E-Mail</source>
+        <target>Имя пользователя</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Password</source>
+        <target>Пароль</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Remember</source>
+        <target>Запомнить</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>Promote</source>
+        <target>Поднять</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>Demote</source>
+        <target>Опустить</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>Users list</source>
+        <target>Пользователи</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>Logout</source>
+        <target>Выход</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>Position</source>
+        <target>Позиция</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>remove the current file</source>
+        <target>удалить текущий файл</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <source>Admin Interface</source>
+        <target>Административная панель</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>Name</source>
+        <target>Название</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>Announce</source>
+        <target>Анонс</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>Image</source>
+        <target>Картинка</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <source>Description</source>
+        <target>Описание</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>First name</source>
+        <target>Имя</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>Last name</source>
+        <target>Фамилия</target>
+      </trans-unit>
+      <trans-unit id="22">
+        <source>Email address</source>
+        <target>Email адрес</target>
+      </trans-unit>
+      <trans-unit id="23">
+        <source>Username</source>
+        <target>Имя пользователя</target>
+      </trans-unit>
+      <trans-unit id="24">
+        <source>Password (again)</source>
+        <target>Пароль (повторно)</target>
+      </trans-unit>
+      <trans-unit id="25">
+        <source>Is active</source>
+        <target>Активно</target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source>Is super admin</source>
+        <target>Супер адмитистратор</target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source>Groups</source>
+        <target>Группы</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>Permissions</source>
+        <target>Права</target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source>User</source>
+        <target>Пользователь</target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source>Permissions and groups</source>
+        <target>Права и группы</target>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>Editing User "%%username%%"</source>
+        <target>Редактирование пользователя "%%username%%"</target>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>Created at</source>
+        <target>Дата создания</target>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>Updated at</source>
+        <target>Дата редактирования</target>
+      </trans-unit>
+      <trans-unit id="34">
+        <source>Groups list</source>
+        <target>Список групп</target>
+      </trans-unit>
+      <trans-unit id="35">
+        <source>Permissions list</source>
+        <target>Список прав</target>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>Last login</source>
+        <target>Дата последнего визита</target>
+      </trans-unit>
+      <trans-unit id="37">
+        <source>Salt</source>
+        <target>Соль</target>
+      </trans-unit>
+      <trans-unit id="38">
+        <source>Algorithm</source>
+        <target>Алгоритм</target>
+      </trans-unit>
+      <trans-unit id="39">
+        <source>is empty</source>
+        <target>пусто</target>
+      </trans-unit>
+      <trans-unit id="40">
+        <source>Stat pages</source>
+        <target>Статические страницы</target>
+      </trans-unit>
+      <trans-unit id="41">
+        <source>Stat pages list</source>
+        <target>Статические страницы</target>
+      </trans-unit>
+      <trans-unit id="42">
+        <source>Alias</source>
+        <target>Псевдоним</target>
+      </trans-unit>
+      <trans-unit id="43">
+        <source>Editing page "%%name%%"</source>
+        <target>Редактирование страницы "%%name%%"</target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>Create page</source>
+        <target>Создание статической страницы</target>
+      </trans-unit>
+      <trans-unit id="45">
+        <source>User list</source>
+        <target>Список пользователей</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           StatPage
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          stat_page
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        actions: {}
+        batch_actions: {}
+        object_actions: { _edit: ~ }
+        title: Stat pages list
+        display: [=name, _image, updated_at]
+        fields:
+          updated_at: { date_format: dd.MM.yyyy }
+      filter:
+        class: false
+      form:    ~
+      edit:
+        actions: { _list: ~, _save: ~}
+        title: Editing page "%%name%%"
+#      new:
+#        title : Create page

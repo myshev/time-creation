@@ -1,0 +1,7 @@
+/cache/
+/log/
+/web/uploads
+/.idea
+.DS_Store
+/env
+/config/sphinx.conf

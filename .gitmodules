@@ -1,0 +1,9 @@
+[submodule "plugins/csSettingsPlugin"]
+	path = plugins/csSettingsPlugin
+	url = https://github.com/bshaffer/csSettingsPlugin.git
+[submodule "lib/vendor/symfony"]
+	path = lib/vendor/symfony
+	url = git@git.slweb.ru:/symfony1.4.git
+[submodule "plugins/csDoctrineActAsSortablePlugin"]
+	path = plugins/csDoctrineActAsSortablePlugin
+	url = git://github.com/bshaffer/csDoctrineActAsSortablePlugin.git

@@ -1,0 +1,73 @@
+StatPage:
+  connection: doctrine
+  comment: 'Статические страницы'
+  tableName: stat_page
+  actAs:
+    Timestampable: ~
+  columns:
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      comment: 'Заголовок страницы'
+    alias:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      comment: 'Символьное имя страницы'
+    description:
+      type: clob
+      notnull: true
+      comment: 'Текст страницы'
+    image:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+      comment: 'Изображение'
+
+News:
+  connection: doctrine
+  comment: 'Новости'
+  tableName: news
+  actAs:
+    Timestampable: ~
+    Sortable: ~
+  columns:
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      comment: 'Заголовок новости'
+    announce:
+      type: string(1000)
+      notnull: true
+      comment: 'Анонс'
+    description:
+      type: clob
+      notnull: true
+      comment: 'Описание'
+    image:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+      comment: 'Изображение'
+    is_active:
+      type: boolean
+      notnull: true
+      default: true
+      comment: 'Элемент активен'

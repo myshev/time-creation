@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="ru" datatype="plaintext" original="messages" date="2013-04-19T10:40:07Z" product-name="messages">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>Signin</source>
+        <target>Вход</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Forgot your password?</source>
+        <target>Забыли пароль?</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Want to register?</source>
+        <target>Хотите зарегистрироваться?</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
