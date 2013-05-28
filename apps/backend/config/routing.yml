@@ -1,3 +1,30 @@
+product:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Product
+    module:               product
+    prefix_path:          /product
+    column:               id
+    with_wildcard_routes: true
+
+product_subcategory:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProductSubcategory
+    module:               product_subcategory
+    prefix_path:          /product_subcategory
+    column:               id
+    with_wildcard_routes: true
+
+product_category:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProductCategory
+    module:               product_category
+    prefix_path:          /product_category
+    column:               id
+    with_wildcard_routes: true
+
 stat_page:
   class: sfDoctrineRouteCollection
   options:

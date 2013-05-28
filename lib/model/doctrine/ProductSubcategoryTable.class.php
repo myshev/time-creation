@@ -16,4 +16,13 @@ class ProductSubcategoryTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('ProductSubcategory');
     }
+
+	public function retrieveProductSubcategoryList() {
+		$q = $this->createQuery('ps');
+
+		foreach($q->execute() as $choice){
+			$choices[$choice->getId()] = $choice;
+		}
+		return $choices;
+	}
 }

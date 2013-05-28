@@ -199,6 +199,12 @@ Product:
       notnull: true
       default: true
       comment: 'Элемент активен'
+  relations:
+    ProductSubcategory:
+      class: ProductSubcategory
+      refClass: ProductSubcategory2Product
+      local: product_id
+      foreign: product_subcategory_id
 
 ProductSubcategory2Product:
   connection: doctrine

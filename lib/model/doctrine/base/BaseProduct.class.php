@@ -12,6 +12,7 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @property clob $description
  * @property string $image
  * @property boolean $is_active
+ * @property Doctrine_Collection $ProductSubcategory
  * @property Doctrine_Collection $ProductSubcategory2Product
  * 
  * @method string              getName()                       Returns the current record's "name" value
@@ -19,12 +20,14 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @method clob                getDescription()                Returns the current record's "description" value
  * @method string              getImage()                      Returns the current record's "image" value
  * @method boolean             getIsActive()                   Returns the current record's "is_active" value
+ * @method Doctrine_Collection getProductSubcategory()         Returns the current record's "ProductSubcategory" collection
  * @method Doctrine_Collection getProductSubcategory2Product() Returns the current record's "ProductSubcategory2Product" collection
  * @method Product             setName()                       Sets the current record's "name" value
  * @method Product             setAnnounce()                   Sets the current record's "announce" value
  * @method Product             setDescription()                Sets the current record's "description" value
  * @method Product             setImage()                      Sets the current record's "image" value
  * @method Product             setIsActive()                   Sets the current record's "is_active" value
+ * @method Product             setProductSubcategory()         Sets the current record's "ProductSubcategory" collection
  * @method Product             setProductSubcategory2Product() Sets the current record's "ProductSubcategory2Product" collection
  * 
  * @package    manymoney
@@ -79,6 +82,11 @@ abstract class BaseProduct extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('ProductSubcategory', array(
+             'refClass' => 'ProductSubcategory2Product',
+             'local' => 'product_id',
+             'foreign' => 'product_subcategory_id'));
+
         $this->hasMany('ProductSubcategory2Product', array(
              'local' => 'id',
              'foreign' => 'product_id'));

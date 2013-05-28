@@ -13,23 +13,25 @@ abstract class BaseProductFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'announce'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'description' => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'image'       => new sfWidgetFormFilterInput(),
-      'is_active'   => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
-      'created_at'  => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'updated_at'  => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'name'                     => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'announce'                 => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'description'              => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'image'                    => new sfWidgetFormFilterInput(),
+      'is_active'                => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'created_at'               => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'updated_at'               => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'product_subcategory_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'ProductSubcategory')),
     ));
 
     $this->setValidators(array(
-      'name'        => new sfValidatorPass(array('required' => false)),
-      'announce'    => new sfValidatorPass(array('required' => false)),
-      'description' => new sfValidatorPass(array('required' => false)),
-      'image'       => new sfValidatorPass(array('required' => false)),
-      'is_active'   => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
-      'created_at'  => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'updated_at'  => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'name'                     => new sfValidatorPass(array('required' => false)),
+      'announce'                 => new sfValidatorPass(array('required' => false)),
+      'description'              => new sfValidatorPass(array('required' => false)),
+      'image'                    => new sfValidatorPass(array('required' => false)),
+      'is_active'                => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'created_at'               => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'updated_at'               => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'product_subcategory_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'ProductSubcategory', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('product_filters[%s]');
@@ -41,6 +43,24 @@ abstract class BaseProductFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
+  public function addProductSubcategoryListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.ProductSubcategory2Product ProductSubcategory2Product')
+      ->andWhereIn('ProductSubcategory2Product.product_subcategory_id', $values)
+    ;
+  }
+
   public function getModelName()
   {
     return 'Product';
@@ -49,14 +69,15 @@ abstract class BaseProductFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'          => 'Number',
-      'name'        => 'Text',
-      'announce'    => 'Text',
-      'description' => 'Text',
-      'image'       => 'Text',
-      'is_active'   => 'Boolean',
-      'created_at'  => 'Date',
-      'updated_at'  => 'Date',
+      'id'                       => 'Number',
+      'name'                     => 'Text',
+      'announce'                 => 'Text',
+      'description'              => 'Text',
+      'image'                    => 'Text',
+      'is_active'                => 'Boolean',
+      'created_at'               => 'Date',
+      'updated_at'               => 'Date',
+      'product_subcategory_list' => 'ManyKey',
     );
   }
 }

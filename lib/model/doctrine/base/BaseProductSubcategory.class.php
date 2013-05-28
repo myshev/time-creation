@@ -14,6 +14,7 @@ Doctrine_Manager::getInstance()->bindComponent('ProductSubcategory', 'doctrine')
  * @property string $image
  * @property boolean $is_active
  * @property ProductCategory $ProductCategory
+ * @property Doctrine_Collection $Product
  * @property Doctrine_Collection $ProductSubcategory2Product
  * 
  * @method string              getName()                       Returns the current record's "name" value
@@ -23,6 +24,7 @@ Doctrine_Manager::getInstance()->bindComponent('ProductSubcategory', 'doctrine')
  * @method string              getImage()                      Returns the current record's "image" value
  * @method boolean             getIsActive()                   Returns the current record's "is_active" value
  * @method ProductCategory     getProductCategory()            Returns the current record's "ProductCategory" value
+ * @method Doctrine_Collection getProduct()                    Returns the current record's "Product" collection
  * @method Doctrine_Collection getProductSubcategory2Product() Returns the current record's "ProductSubcategory2Product" collection
  * @method ProductSubcategory  setName()                       Sets the current record's "name" value
  * @method ProductSubcategory  setProductCategoryId()          Sets the current record's "product_category_id" value
@@ -31,6 +33,7 @@ Doctrine_Manager::getInstance()->bindComponent('ProductSubcategory', 'doctrine')
  * @method ProductSubcategory  setImage()                      Sets the current record's "image" value
  * @method ProductSubcategory  setIsActive()                   Sets the current record's "is_active" value
  * @method ProductSubcategory  setProductCategory()            Sets the current record's "ProductCategory" value
+ * @method ProductSubcategory  setProduct()                    Sets the current record's "Product" collection
  * @method ProductSubcategory  setProductSubcategory2Product() Sets the current record's "ProductSubcategory2Product" collection
  * 
  * @package    manymoney
@@ -98,6 +101,11 @@ abstract class BaseProductSubcategory extends sfDoctrineRecord
              'local' => 'product_category_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('Product', array(
+             'refClass' => 'ProductSubcategory2Product',
+             'local' => 'product_subcategory_id',
+             'foreign' => 'product_id'));
 
         $this->hasMany('ProductSubcategory2Product', array(
              'local' => 'id',

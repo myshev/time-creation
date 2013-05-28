@@ -10,7 +10,18 @@
  */
 class ProductSubcategoryForm extends BaseProductSubcategoryForm
 {
-  public function configure()
-  {
-  }
+	public function configure() {
+		parent::configure();
+
+		$this->removeFields();
+	}
+
+	private function removeFields() {
+		unset(
+			$this['created_at'],
+			$this['updated_at'],
+			$this['position'],
+			$this['product_list']
+		);
+	}
 }
