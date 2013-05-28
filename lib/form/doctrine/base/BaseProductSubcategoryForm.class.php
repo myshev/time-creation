@@ -17,7 +17,7 @@ abstract class BaseProductSubcategoryForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                  => new sfWidgetFormInputHidden(),
       'name'                => new sfWidgetFormInputText(),
-      'product_category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Certificate'), 'add_empty' => true)),
+      'product_category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'), 'add_empty' => true)),
       'announce'            => new sfWidgetFormTextarea(),
       'description'         => new sfWidgetFormTextarea(),
       'image'               => new sfWidgetFormInputText(),
@@ -30,7 +30,7 @@ abstract class BaseProductSubcategoryForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                  => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'name'                => new sfValidatorString(array('max_length' => 255)),
-      'product_category_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Certificate'), 'required' => false)),
+      'product_category_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'), 'required' => false)),
       'announce'            => new sfValidatorString(array('max_length' => 1000)),
       'description'         => new sfValidatorString(),
       'image'               => new sfValidatorString(array('max_length' => 255, 'required' => false)),

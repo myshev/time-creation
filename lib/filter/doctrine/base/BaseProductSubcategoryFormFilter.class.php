@@ -14,7 +14,7 @@ abstract class BaseProductSubcategoryFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'name'                => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'product_category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Certificate'), 'add_empty' => true)),
+      'product_category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'), 'add_empty' => true)),
       'announce'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'description'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'image'               => new sfWidgetFormFilterInput(),
@@ -26,7 +26,7 @@ abstract class BaseProductSubcategoryFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'name'                => new sfValidatorPass(array('required' => false)),
-      'product_category_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Certificate'), 'column' => 'id')),
+      'product_category_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('ProductCategory'), 'column' => 'id')),
       'announce'            => new sfValidatorPass(array('required' => false)),
       'description'         => new sfValidatorPass(array('required' => false)),
       'image'               => new sfValidatorPass(array('required' => false)),

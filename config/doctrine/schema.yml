@@ -156,8 +156,45 @@ ProductSubcategory:
       default: true
       comment: 'Элемент активен'
   relations:
-    Certificate:
+    ProductCategory:
       type: one
       local: product_category_id
       class: ProductCategory
       foreign: id
+
+Product:
+  connection: doctrine
+  comment: 'Продукты'
+  tableName: product
+  actAs:
+    Timestampable: ~
+  columns:
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      comment: 'Название продукта'
+    announce:
+      type: string(1000)
+      notnull: true
+      comment: 'Анонс'
+    description:
+      type: clob
+      notnull: true
+      comment: 'Описание'
+    image:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+      comment: 'Изображение'
+    is_active:
+      type: boolean
+      notnull: true
+      default: true
+      comment: 'Элемент активен'

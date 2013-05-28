@@ -13,7 +13,7 @@ Doctrine_Manager::getInstance()->bindComponent('ProductSubcategory', 'doctrine')
  * @property clob $description
  * @property string $image
  * @property boolean $is_active
- * @property ProductCategory $Certificate
+ * @property ProductCategory $ProductCategory
  * 
  * @method string             getName()                Returns the current record's "name" value
  * @method integer            getProductCategoryId()   Returns the current record's "product_category_id" value
@@ -21,14 +21,14 @@ Doctrine_Manager::getInstance()->bindComponent('ProductSubcategory', 'doctrine')
  * @method clob               getDescription()         Returns the current record's "description" value
  * @method string             getImage()               Returns the current record's "image" value
  * @method boolean            getIsActive()            Returns the current record's "is_active" value
- * @method ProductCategory    getCertificate()         Returns the current record's "Certificate" value
+ * @method ProductCategory    getProductCategory()     Returns the current record's "ProductCategory" value
  * @method ProductSubcategory setName()                Sets the current record's "name" value
  * @method ProductSubcategory setProductCategoryId()   Sets the current record's "product_category_id" value
  * @method ProductSubcategory setAnnounce()            Sets the current record's "announce" value
  * @method ProductSubcategory setDescription()         Sets the current record's "description" value
  * @method ProductSubcategory setImage()               Sets the current record's "image" value
  * @method ProductSubcategory setIsActive()            Sets the current record's "is_active" value
- * @method ProductSubcategory setCertificate()         Sets the current record's "Certificate" value
+ * @method ProductSubcategory setProductCategory()     Sets the current record's "ProductCategory" value
  * 
  * @package    manymoney
  * @subpackage model
@@ -91,7 +91,7 @@ abstract class BaseProductSubcategory extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('ProductCategory as Certificate', array(
+        $this->hasOne('ProductCategory', array(
              'local' => 'product_category_id',
              'foreign' => 'id'));
 
