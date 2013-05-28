@@ -25,6 +25,19 @@ class ProductForm extends BaseProductForm
 		));
 		$this->validatorSchema['product_subcategory_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'ProductSubcategory', 'required' => true));
 
+	/*	$this->setWidget('product_subcategory_list', new sfWidgetFormDoctrineChoiceGrouped(array(
+			'model' => 'ProductSubcategory',
+			'multiple' => true,
+			'group_by' => 'ProductCategory',
+			'renderer_class' => 'sfWidgetFormSelectDoubleList',
+		)));
+
+		$this->validatorSchema['product_subcategory_list'] = new sfValidatorDoctrineChoice(array(
+			'model' => 'ProductSubcategory',
+			'required' => false,
+			'multiple' => true,
+		));*/
+
 
 		$this->removeFields();
 	}
