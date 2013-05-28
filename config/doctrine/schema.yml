@@ -161,6 +161,7 @@ ProductSubcategory:
       local: product_category_id
       class: ProductCategory
       foreign: id
+      onDelete: CASCADE
 
 Product:
   connection: doctrine
@@ -198,3 +199,38 @@ Product:
       notnull: true
       default: true
       comment: 'Элемент активен'
+
+ProductSubcategory2Product:
+  connection: doctrine
+  comment: 'Связка продуктов и подкатегорий'
+  tableName: product_subcategory2product
+  actAs:
+    Timestampable: ~
+  columns:
+    product_id:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      autoincrement: false
+      comment: 'Продукт'
+    product_subcategory_id:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      autoincrement: false
+      comment: 'Подкатегория'
+  relations:
+    Product:
+      local: product_id
+      foreign: id
+      type: one
+      class: Product
+      onDelete: CASCADE
+    ProductSubcategory:
+      local: product_subcategory_id
+      foreign: id
+      type: one
+      class: ProductSubcategory
+      onDelete: CASCADE
