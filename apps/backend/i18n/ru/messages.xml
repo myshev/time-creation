@@ -10,7 +10,7 @@
       </trans-unit>
       <trans-unit id="2">
         <source>News list</source>
-        <target>Список новостей</target>
+        <target>Новости</target>
       </trans-unit>
       <trans-unit id="3">
         <source>Editing news "%%name%%"</source>
@@ -162,11 +162,11 @@
       </trans-unit>
       <trans-unit id="40">
         <source>Stat pages</source>
-        <target>Статические страницы</target>
+        <target>Страницы</target>
       </trans-unit>
       <trans-unit id="41">
         <source>Stat pages list</source>
-        <target>Статические страницы</target>
+        <target>Страницы</target>
       </trans-unit>
       <trans-unit id="42">
         <source>Alias</source>
@@ -209,8 +209,8 @@
         <target>Список категорий товаров</target>
       </trans-unit>
       <trans-unit id="52">
-        <source>Product subcategory List</source>
-        <target>Список подкатегорий товаров</target>
+        <source>Product subcategory list</source>
+        <target>Подкатегорий товаров</target>
       </trans-unit>
       <trans-unit id="53">
         <source>Edit Product subcategory</source>
@@ -240,6 +240,10 @@
         <source>New Product category</source>
         <target>Новая категория товаров</target>
       </trans-unit>
+	  <trans-unit id="60">
+		<source>Product subcategory List</source>
+		<target>Подкатегории товаров</target>
+	  </trans-unit>
     </body>
   </file>
 </xliff>

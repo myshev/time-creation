@@ -14,8 +14,13 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
-      filter:  ~
+      list:
+        display: [id, =name, _announce, _image, is_active, created_at]
+        fields:
+          created_at: { date_format: dd.MM.yyyy }
+        max_per_page: 20
+      filter:
+        display: [name, product_subcategory_list]
       form:    ~
       edit:    ~
       new:     ~

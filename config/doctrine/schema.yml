@@ -240,3 +240,19 @@ ProductSubcategory2Product:
       type: one
       class: ProductSubcategory
       onDelete: CASCADE
+
+Manufacturer:
+  connection: doctrine
+  comment: 'Производитель'
+  tableName: manufacturer
+  actAs:
+    Timestampable: ~
+  columns:
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      comment: 'Название производителя'
