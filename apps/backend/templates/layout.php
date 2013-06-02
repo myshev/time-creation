@@ -15,7 +15,7 @@
 					<a href="<?php echo url_for('homepage') ?>"><?=__('Many Money');?></a>
 				</h1>
 			</div>
-			<?php if ($sf_user->isAuthenticated()){ ?>
+			<?php if ($sf_user->isAuthenticated()) { ?>
 				<div id="menu">
 					<ul>
 						<li><?php echo link_to(__('News list'), 'news') ?></li>
@@ -24,6 +24,7 @@
 						<li><?php echo link_to(__('Products'), 'product') ?></li>
 						<li><?php echo link_to(__('Products category'), 'product_category') ?></li>
 						<li><?php echo link_to(__('Products subcategory'), 'product_subcategory') ?></li>
+						<li><?php echo link_to(__('Manufacturer'), 'manufacturer') ?></li>
 						<li><?php echo link_to(__('Logout'), 'sf_guard_signout') ?></li>
 					</ul>
 				</div>

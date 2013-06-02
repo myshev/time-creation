@@ -210,7 +210,7 @@
       </trans-unit>
       <trans-unit id="52">
         <source>Product subcategory list</source>
-        <target>Подкатегорий товаров</target>
+        <target>Подкатегории товаров</target>
       </trans-unit>
       <trans-unit id="53">
         <source>Edit Product subcategory</source>
@@ -243,6 +243,30 @@
 	  <trans-unit id="60">
 		<source>Product subcategory List</source>
 		<target>Подкатегории товаров</target>
+	  </trans-unit>
+	  <trans-unit id="61">
+		<source>Manufacturer</source>
+		<target>Производитель</target>
+	  </trans-unit>
+	  <trans-unit id="62">
+		<source>Manufacturer List</source>
+		<target>Производители</target>
+	  </trans-unit>
+	  <trans-unit id="63">
+		<source>New Manufacturer</source>
+		<target>Новый производитель</target>
+	  </trans-unit>
+	  <trans-unit id="64">
+		<source>Edit Manufacturer</source>
+		<target>Редактирование производителя</target>
+	  </trans-unit>
+	  <trans-unit id="65">
+		<source>Quantity in stock</source>
+		<target>Кол-во на складе</target>
+	  </trans-unit>
+	  <trans-unit id="66">
+		<source>Cost</source>
+		<target>Цена</target>
 	  </trans-unit>
     </body>
   </file>

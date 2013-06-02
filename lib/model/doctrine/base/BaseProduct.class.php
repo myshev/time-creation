@@ -12,7 +12,11 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @property clob $description
  * @property string $image
  * @property boolean $is_active
+ * @property integer $quantity_in_stock
+ * @property integer $cost
+ * @property integer $manufacturer_id
  * @property Doctrine_Collection $ProductSubcategory
+ * @property Manufacturer $Manufacturer
  * @property Doctrine_Collection $ProductSubcategory2Product
  * 
  * @method string              getName()                       Returns the current record's "name" value
@@ -20,14 +24,22 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @method clob                getDescription()                Returns the current record's "description" value
  * @method string              getImage()                      Returns the current record's "image" value
  * @method boolean             getIsActive()                   Returns the current record's "is_active" value
+ * @method integer             getQuantityInStock()            Returns the current record's "quantity_in_stock" value
+ * @method integer             getCost()                       Returns the current record's "cost" value
+ * @method integer             getManufacturerId()             Returns the current record's "manufacturer_id" value
  * @method Doctrine_Collection getProductSubcategory()         Returns the current record's "ProductSubcategory" collection
+ * @method Manufacturer        getManufacturer()               Returns the current record's "Manufacturer" value
  * @method Doctrine_Collection getProductSubcategory2Product() Returns the current record's "ProductSubcategory2Product" collection
  * @method Product             setName()                       Sets the current record's "name" value
  * @method Product             setAnnounce()                   Sets the current record's "announce" value
  * @method Product             setDescription()                Sets the current record's "description" value
  * @method Product             setImage()                      Sets the current record's "image" value
  * @method Product             setIsActive()                   Sets the current record's "is_active" value
+ * @method Product             setQuantityInStock()            Sets the current record's "quantity_in_stock" value
+ * @method Product             setCost()                       Sets the current record's "cost" value
+ * @method Product             setManufacturerId()             Sets the current record's "manufacturer_id" value
  * @method Product             setProductSubcategory()         Sets the current record's "ProductSubcategory" collection
+ * @method Product             setManufacturer()               Sets the current record's "Manufacturer" value
  * @method Product             setProductSubcategory2Product() Sets the current record's "ProductSubcategory2Product" collection
  * 
  * @package    manymoney
@@ -77,6 +89,36 @@ abstract class BaseProduct extends sfDoctrineRecord
              'default' => true,
              'comment' => 'Элемент активен',
              ));
+        $this->hasColumn('quantity_in_stock', 'integer', 20, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'autoincrement' => false,
+             'notnull' => true,
+             'comment' => 'Количество на складе',
+             'length' => 20,
+             ));
+        $this->hasColumn('cost', 'integer', 20, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'autoincrement' => false,
+             'notnull' => true,
+             'comment' => 'Цена',
+             'length' => 20,
+             ));
+        $this->hasColumn('manufacturer_id', 'integer', 20, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'autoincrement' => false,
+             'notnull' => false,
+             'comment' => 'Производитель',
+             'length' => 20,
+             ));
     }
 
     public function setUp()
@@ -86,6 +128,11 @@ abstract class BaseProduct extends sfDoctrineRecord
              'refClass' => 'ProductSubcategory2Product',
              'local' => 'product_id',
              'foreign' => 'product_subcategory_id'));
+
+        $this->hasOne('Manufacturer', array(
+             'local' => 'manufacturer_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasMany('ProductSubcategory2Product', array(
              'local' => 'id',

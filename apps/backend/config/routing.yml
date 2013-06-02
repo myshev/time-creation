@@ -1,3 +1,12 @@
+manufacturer:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Manufacturer
+    module:               manufacturer
+    prefix_path:          /manufacturer
+    column:               id
+    with_wildcard_routes: true
+
 product:
   class: sfDoctrineRouteCollection
   options:

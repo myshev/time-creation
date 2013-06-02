@@ -1,13 +1,13 @@
 generator:
   class: sfDoctrineGenerator
   param:
-    model_class:           Product
+    model_class:           Manufacturer
     theme:                 admin
     non_verbose_templates: true
     with_show:             false
     singular:              ~
     plural:                ~
-    route_prefix:          product
+    route_prefix:          manufacturer
     with_doctrine_route:   true
     actions_base_class:    sfActions
 
@@ -15,12 +15,9 @@ generator:
       actions: ~
       fields:  ~
       list:
-        display: [id, =name, _announce, _image, manufacturer, quantity_in_stock, cost, is_active, created_at]
-        fields:
-          created_at: { date_format: dd.MM.yyyy }
-        max_per_page: 20
+        display: [id, =name]
       filter:
-        display: [name, product_subcategory_list]
+        class: false
       form:    ~
       edit:    ~
       new:     ~

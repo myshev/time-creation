@@ -199,12 +199,43 @@ Product:
       notnull: true
       default: true
       comment: 'Элемент активен'
+    quantity_in_stock:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      autoincrement: false
+      notnull: true
+      comment: 'Количество на складе'
+    cost:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      autoincrement: false
+      notnull: true
+      comment: 'Цена'
+    manufacturer_id:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      autoincrement: false
+      notnull: false
+      comment: 'Производитель'
   relations:
     ProductSubcategory:
       class: ProductSubcategory
       refClass: ProductSubcategory2Product
       local: product_id
       foreign: product_subcategory_id
+    Manufacturer:
+      local: manufacturer_id
+      foreign: id
+      type: one
+      class: Manufacturer
+      onDelete: SET NULL
+
 
 ProductSubcategory2Product:
   connection: doctrine
