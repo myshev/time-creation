@@ -73,6 +73,18 @@ class ProductForm extends BaseProductForm
 			'multiple' => true,
 		));*/
 
+		$this->widgetSchema['link_product_2_product'] = new sfWidgetFormChoice (array(
+			'choices'			=> ProductTable::getInstance()->getProductsForProductLink($this->getObject()->getId()),
+			'multiple'			=> true,
+			'renderer_class'	=> 'sfWidgetFormSelectDoubleList',
+			'renderer_options'	=> array(
+				'label_associated'		=> 'Связанные',
+				'label_unassociated'	=> 'Доступные',
+				'associated_first'		=> false
+			)
+		));
+		$this->validatorSchema['link_product_2_product'] = new sfValidatorPass();
+		$this->getWidget('link_product_2_product')->setDefault(Product2ProductTable::getInstance()->getLinkedProducts($this->getObject()->getId()));
 
 		$this->removeFields();
 	}
@@ -110,5 +122,64 @@ class ProductForm extends BaseProductForm
 		if ($directory_thumb && is_file($fileThumb = $directory_thumb .'/'. $this->getObject()->$field))	{
 			unlink($fileThumb);
 		}
+	}
+
+	/*public function updateObject($values = null) {
+		parent::updateObject($values = null);
+	}*/
+
+	public function doSave($con = null) {
+		parent::doSave($con);
+
+		if(isset($this['link_product_2_product'])) {
+			$iCurrentAcId = $this->getObject()->getId();
+			$aSelectedAc = $this->values['link_product_2_product'];
+			$iCntSelectedAc = count($aSelectedAc);
+
+			/* существующие связки продуктов с текущим продуктом */
+			$oCurrentAcLinks = Product2ProductTable::getInstance()->getLinkedProductsRecords($iCurrentAcId);
+			$iCntCurrentAcLinks = $oCurrentAcLinks->count();
+
+			/* если выбраных продуктов больше или равно чем сохраненных в базе,
+			то обновляем существующие и, если надо, добавляем недостающие */
+			$i = 0;
+			if($iCntSelectedAc >= $iCntCurrentAcLinks) {
+				if($iCntCurrentAcLinks > 0) {
+					foreach($oCurrentAcLinks as $oAcLink) {
+						/* обновляем существующие записи */
+						$this->updateProduct($oAcLink, $iCurrentAcId, $aSelectedAc[$i]);
+						$i++;
+					}
+				}
+
+				if($iCntSelectedAc > $iCntCurrentAcLinks) {
+					for($j = $i; $j < $iCntSelectedAc; $j++) {
+						$this->updateProduct(new Product2Product(), $iCurrentAcId, $aSelectedAc[$i]);
+						$i++;
+					}
+				}
+			} else {
+				/* если выбраных продуктов меньше чем в базе, обновляем существующие, и удаляем не нужные */
+				foreach($oCurrentAcLinks as $oAcLink) {
+					if($iCntSelectedAc > $i) {
+						/* обновляем существующие записи, если есть что обновлять*/
+						$this->updateProduct($oAcLink, $iCurrentAcId, $aSelectedAc[$i]);
+					} else {
+						/* Удаляем лишнее */
+						$oAcLink->delete();
+					}
+					$i++;
+				}
+			}
+		}
+	}
+
+	private function updateProduct($oProduct2Product, $productId, $iParentProductId) {
+		if(is_object($oProduct2Product) && (intval($iParentProductId) != intval($productId))) {
+			$oProduct2Product->product_id = $productId;
+			$oProduct2Product->parent_product_id = $iParentProductId;
+			return $oProduct2Product->save();
+		}
+		return false;
 	}
 }

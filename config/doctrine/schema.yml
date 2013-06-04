@@ -236,7 +236,6 @@ Product:
       class: Manufacturer
       onDelete: SET NULL
 
-
 ProductSubcategory2Product:
   connection: doctrine
   comment: 'Связка продуктов и подкатегорий'
@@ -287,3 +286,40 @@ Manufacturer:
       notnull: true
       autoincrement: false
       comment: 'Название производителя'
+
+Product2Product:
+  connection: doctrine
+  comment: 'Связка товара с товаром'
+  tableName: product2product
+  columns:
+    product_id:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      autoincrement: false
+      comment: 'Продукт 1'
+    parent_product_id:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      autoincrement: false
+      comment: 'Продукт 2'
+  relations:
+    Product:
+      local: product_id
+      foreign: id
+      type: one
+      class: Product
+      onDelete: CASCADE
+    ParentProduct:
+      local: parent_product_id
+      foreign: id
+      type: one
+      class: Product
+      onDelete: CASCADE
+  indexes:
+    product2product_index:
+      fields: [product_id, parent_product_id]
+      type: unique

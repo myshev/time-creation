@@ -18,6 +18,7 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @property Doctrine_Collection $ProductSubcategory
  * @property Manufacturer $Manufacturer
  * @property Doctrine_Collection $ProductSubcategory2Product
+ * @property Doctrine_Collection $Product2Product
  * 
  * @method string              getName()                       Returns the current record's "name" value
  * @method string              getAnnounce()                   Returns the current record's "announce" value
@@ -30,6 +31,7 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @method Doctrine_Collection getProductSubcategory()         Returns the current record's "ProductSubcategory" collection
  * @method Manufacturer        getManufacturer()               Returns the current record's "Manufacturer" value
  * @method Doctrine_Collection getProductSubcategory2Product() Returns the current record's "ProductSubcategory2Product" collection
+ * @method Doctrine_Collection getProduct2Product()            Returns the current record's "Product2Product" collection
  * @method Product             setName()                       Sets the current record's "name" value
  * @method Product             setAnnounce()                   Sets the current record's "announce" value
  * @method Product             setDescription()                Sets the current record's "description" value
@@ -41,6 +43,7 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @method Product             setProductSubcategory()         Sets the current record's "ProductSubcategory" collection
  * @method Product             setManufacturer()               Sets the current record's "Manufacturer" value
  * @method Product             setProductSubcategory2Product() Sets the current record's "ProductSubcategory2Product" collection
+ * @method Product             setProduct2Product()            Sets the current record's "Product2Product" collection
  * 
  * @package    manymoney
  * @subpackage model
@@ -135,6 +138,10 @@ abstract class BaseProduct extends sfDoctrineRecord
              'onDelete' => 'SET NULL'));
 
         $this->hasMany('ProductSubcategory2Product', array(
+             'local' => 'id',
+             'foreign' => 'product_id'));
+
+        $this->hasMany('Product2Product', array(
              'local' => 'id',
              'foreign' => 'product_id'));
 

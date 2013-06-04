@@ -16,4 +16,20 @@ class ProductTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Product');
     }
+
+	public function getProductsForProductLink($productId) {
+		if((int) $productId) {
+			$oResult = $this->createQuery('p')->where( 'p.id <> ?', $productId )->execute();
+		} else {
+			$oResult = $this->createQuery('p')->execute();
+		}
+
+		if($oResult->count()) {
+			foreach($oResult as $choice){
+				$choices[$choice->getId()] = $choice;
+			}
+			return $choices;
+		}
+		return false;
+	}
 }
