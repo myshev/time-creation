@@ -11,6 +11,7 @@ Doctrine_Manager::getInstance()->bindComponent('ProductSubcategory', 'doctrine')
  * @property integer $product_category_id
  * @property string $announce
  * @property clob $description
+ * @property string $alias
  * @property string $image
  * @property boolean $is_active
  * @property ProductCategory $ProductCategory
@@ -21,6 +22,7 @@ Doctrine_Manager::getInstance()->bindComponent('ProductSubcategory', 'doctrine')
  * @method integer             getProductCategoryId()          Returns the current record's "product_category_id" value
  * @method string              getAnnounce()                   Returns the current record's "announce" value
  * @method clob                getDescription()                Returns the current record's "description" value
+ * @method string              getAlias()                      Returns the current record's "alias" value
  * @method string              getImage()                      Returns the current record's "image" value
  * @method boolean             getIsActive()                   Returns the current record's "is_active" value
  * @method ProductCategory     getProductCategory()            Returns the current record's "ProductCategory" value
@@ -30,6 +32,7 @@ Doctrine_Manager::getInstance()->bindComponent('ProductSubcategory', 'doctrine')
  * @method ProductSubcategory  setProductCategoryId()          Sets the current record's "product_category_id" value
  * @method ProductSubcategory  setAnnounce()                   Sets the current record's "announce" value
  * @method ProductSubcategory  setDescription()                Sets the current record's "description" value
+ * @method ProductSubcategory  setAlias()                      Sets the current record's "alias" value
  * @method ProductSubcategory  setImage()                      Sets the current record's "image" value
  * @method ProductSubcategory  setIsActive()                   Sets the current record's "is_active" value
  * @method ProductSubcategory  setProductCategory()            Sets the current record's "ProductCategory" value
@@ -76,6 +79,16 @@ abstract class BaseProductSubcategory extends sfDoctrineRecord
              'notnull' => true,
              'comment' => 'Описание',
              ));
+        $this->hasColumn('alias', 'string', 255, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'comment' => 'Алиас',
+             'length' => 255,
+             ));
         $this->hasColumn('image', 'string', 255, array(
              'type' => 'string',
              'fixed' => 0,
@@ -91,6 +104,15 @@ abstract class BaseProductSubcategory extends sfDoctrineRecord
              'notnull' => true,
              'default' => true,
              'comment' => 'Элемент активен',
+             ));
+
+
+        $this->index('alias_index', array(
+             'fields' => 
+             array(
+              0 => 'alias',
+             ),
+             'type' => 'unique',
              ));
     }
 

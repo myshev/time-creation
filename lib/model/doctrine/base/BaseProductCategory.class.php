@@ -10,6 +10,7 @@ Doctrine_Manager::getInstance()->bindComponent('ProductCategory', 'doctrine');
  * @property string $name
  * @property string $announce
  * @property clob $description
+ * @property string $alias
  * @property string $image
  * @property boolean $is_active
  * @property Doctrine_Collection $ProductSubcategory
@@ -17,12 +18,14 @@ Doctrine_Manager::getInstance()->bindComponent('ProductCategory', 'doctrine');
  * @method string              getName()               Returns the current record's "name" value
  * @method string              getAnnounce()           Returns the current record's "announce" value
  * @method clob                getDescription()        Returns the current record's "description" value
+ * @method string              getAlias()              Returns the current record's "alias" value
  * @method string              getImage()              Returns the current record's "image" value
  * @method boolean             getIsActive()           Returns the current record's "is_active" value
  * @method Doctrine_Collection getProductSubcategory() Returns the current record's "ProductSubcategory" collection
  * @method ProductCategory     setName()               Sets the current record's "name" value
  * @method ProductCategory     setAnnounce()           Sets the current record's "announce" value
  * @method ProductCategory     setDescription()        Sets the current record's "description" value
+ * @method ProductCategory     setAlias()              Sets the current record's "alias" value
  * @method ProductCategory     setImage()              Sets the current record's "image" value
  * @method ProductCategory     setIsActive()           Sets the current record's "is_active" value
  * @method ProductCategory     setProductSubcategory() Sets the current record's "ProductSubcategory" collection
@@ -58,6 +61,16 @@ abstract class BaseProductCategory extends sfDoctrineRecord
              'notnull' => true,
              'comment' => 'Описание',
              ));
+        $this->hasColumn('alias', 'string', 255, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'comment' => 'Алиас',
+             'length' => 255,
+             ));
         $this->hasColumn('image', 'string', 255, array(
              'type' => 'string',
              'fixed' => 0,
@@ -73,6 +86,15 @@ abstract class BaseProductCategory extends sfDoctrineRecord
              'notnull' => true,
              'default' => true,
              'comment' => 'Элемент активен',
+             ));
+
+
+        $this->index('alias_index', array(
+             'fields' => 
+             array(
+              0 => 'alias',
+             ),
+             'type' => 'unique',
              ));
     }
 

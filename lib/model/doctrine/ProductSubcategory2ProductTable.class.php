@@ -16,4 +16,16 @@ class ProductSubcategory2ProductTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('ProductSubcategory2Product');
     }
+
+	public function getBySubcategory($iSubcategoryId) {
+		if((int) $iSubcategoryId) {
+			$oQuery	= $this->createQuery('ps2p')
+								->leftJoin('ps2p.Product p')
+								->leftJoin('ps2p.ProductSubcategory ps')
+								->where('ps2p.product_subcategory_id = ?', $iSubcategoryId);
+			return $oQuery->execute();
+		}
+
+		return false;
+	}
 }

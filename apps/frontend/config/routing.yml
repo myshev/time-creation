@@ -1,6 +1,14 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+product_subcategory_show:
+  url: /:category_alias/:subcategory_alias
+  param: { module: product, action: showSubcategory }
+
+product_category_show:
+  url: /:category_alias/
+  param: { module: product, action: showCategory }
+
 # default rules
 homepage:
   url:   /

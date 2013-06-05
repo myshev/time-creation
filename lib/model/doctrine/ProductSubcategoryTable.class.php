@@ -33,4 +33,19 @@ class ProductSubcategoryTable extends Doctrine_Table
 			->andWhere('pc.is_active = ?', 1)
 			->execute();
 	}
+
+	public function getActiveByCatAndSubCatAliases($sCategoryAlias = '', $sSubcategoryAlias = '') {
+		if($sCategoryAlias != '' && $sSubcategoryAlias != '') {
+			$oQuery	=  $this->createQuery('ps')
+				->leftJoin('ps.ProductCategory pc')
+				->andWhere('ps.is_active = ?', 1)
+				->andWhere('pc.is_active = ?', 1)
+				->andWhere('pc.alias	= ?', $sCategoryAlias)
+				->andWhere('ps.alias	= ?', $sSubcategoryAlias);
+
+			return $oQuery->fetchOne();
+		}
+
+		return false;
+	}
 }

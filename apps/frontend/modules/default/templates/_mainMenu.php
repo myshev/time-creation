@@ -2,14 +2,18 @@
 	<ul class="vert-nav">
 		<?foreach($oCategories as $oCategory) {?>
 			<li>
-				<a href=""><?=$oCategory->getName();?></a>
-				<?if($oCategory->getProductSubcategory()->count()) {?>
+				<a href="<?=url_for('product_category_show', array('category_alias' => $oCategory->getAlias()));?>"><?=$oCategory->getName();?></a>
+				<? if(isset($aSubcategories[$oCategory->getId()]) && count($aSubcategories[$oCategory->getId()])) {?>
 					<ul>
-						<?foreach($oCategory->getProductSubcategory() as $oSubcategory) {?>
-							<li><a href=""><?=$oSubcategory->getName();?></a></li>
-						<?}?>
+						<? foreach ($aSubcategories[$oCategory->getId()] as $c) { ?>
+							<li>
+								<a href="<?=url_for('product_subcategory_show', array('category_alias' => $oCategory->getAlias(), 'subcategory_alias' => $c->getAlias()))?>">
+									<?=$c->getName();?>
+								</a>
+							</li>
+						<? } ?>
 					</ul>
-				<?}?>
+				<? } ?>
 			</li>
 		<?}?>
 	</ul>

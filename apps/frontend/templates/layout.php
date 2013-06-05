@@ -12,6 +12,7 @@
   	<div>
 		<?include_component('default', 'mainMenu');?>
   	</div>
+	<div class="clear"></div>
     <?php echo $sf_content ?>
   </body>
 </html>

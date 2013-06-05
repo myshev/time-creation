@@ -20,6 +20,7 @@ abstract class BaseProductSubcategoryForm extends BaseFormDoctrine
       'product_category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'), 'add_empty' => true)),
       'announce'            => new sfWidgetFormTextarea(),
       'description'         => new sfWidgetFormTextarea(),
+      'alias'               => new sfWidgetFormInputText(),
       'image'               => new sfWidgetFormInputText(),
       'is_active'           => new sfWidgetFormInputCheckbox(),
       'created_at'          => new sfWidgetFormDateTime(),
@@ -34,6 +35,7 @@ abstract class BaseProductSubcategoryForm extends BaseFormDoctrine
       'product_category_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'), 'required' => false)),
       'announce'            => new sfValidatorString(array('max_length' => 1000)),
       'description'         => new sfValidatorString(),
+      'alias'               => new sfValidatorString(array('max_length' => 255)),
       'image'               => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'is_active'           => new sfValidatorBoolean(array('required' => false)),
       'created_at'          => new sfValidatorDateTime(),
@@ -43,7 +45,10 @@ abstract class BaseProductSubcategoryForm extends BaseFormDoctrine
     ));
 
     $this->validatorSchema->setPostValidator(
-      new sfValidatorDoctrineUnique(array('model' => 'ProductSubcategory', 'column' => array('position')))
+      new sfValidatorAnd(array(
+        new sfValidatorDoctrineUnique(array('model' => 'ProductSubcategory', 'column' => array('alias'))),
+        new sfValidatorDoctrineUnique(array('model' => 'ProductSubcategory', 'column' => array('position'))),
+      ))
     );
 
     $this->widgetSchema->setNameFormat('product_subcategory[%s]');

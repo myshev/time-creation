@@ -15,7 +15,7 @@ generator:
       actions: ~
       fields:  ~
       list:
-        display: [id, =name, _announce, _image, is_active, created_at]
+        display: [id, =name, alias, _announce, _image, is_active, created_at]
       filter:
         class: false
       form:    ~
