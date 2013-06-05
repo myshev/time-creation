@@ -247,6 +247,14 @@ Product:
       autoincrement: false
       notnull: false
       comment: 'Производитель'
+    alias:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      comment: 'Алиас'
   relations:
     ProductSubcategory:
       class: ProductSubcategory

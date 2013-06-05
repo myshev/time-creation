@@ -15,6 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @property integer $quantity_in_stock
  * @property integer $cost
  * @property integer $manufacturer_id
+ * @property string $alias
  * @property Doctrine_Collection $ProductSubcategory
  * @property Manufacturer $Manufacturer
  * @property Doctrine_Collection $ProductSubcategory2Product
@@ -28,6 +29,7 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @method integer             getQuantityInStock()            Returns the current record's "quantity_in_stock" value
  * @method integer             getCost()                       Returns the current record's "cost" value
  * @method integer             getManufacturerId()             Returns the current record's "manufacturer_id" value
+ * @method string              getAlias()                      Returns the current record's "alias" value
  * @method Doctrine_Collection getProductSubcategory()         Returns the current record's "ProductSubcategory" collection
  * @method Manufacturer        getManufacturer()               Returns the current record's "Manufacturer" value
  * @method Doctrine_Collection getProductSubcategory2Product() Returns the current record's "ProductSubcategory2Product" collection
@@ -40,6 +42,7 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @method Product             setQuantityInStock()            Sets the current record's "quantity_in_stock" value
  * @method Product             setCost()                       Sets the current record's "cost" value
  * @method Product             setManufacturerId()             Sets the current record's "manufacturer_id" value
+ * @method Product             setAlias()                      Sets the current record's "alias" value
  * @method Product             setProductSubcategory()         Sets the current record's "ProductSubcategory" collection
  * @method Product             setManufacturer()               Sets the current record's "Manufacturer" value
  * @method Product             setProductSubcategory2Product() Sets the current record's "ProductSubcategory2Product" collection
@@ -121,6 +124,16 @@ abstract class BaseProduct extends sfDoctrineRecord
              'notnull' => false,
              'comment' => 'Производитель',
              'length' => 20,
+             ));
+        $this->hasColumn('alias', 'string', 255, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'comment' => 'Алиас',
+             'length' => 255,
              ));
     }
 

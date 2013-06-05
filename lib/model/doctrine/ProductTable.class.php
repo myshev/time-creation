@@ -17,9 +17,17 @@ class ProductTable extends Doctrine_Table
         return Doctrine_Core::getTable('Product');
     }
 
-	public function getProductsForProductLink($productId) {
-		if((int) $productId) {
-			$oResult = $this->createQuery('p')->where( 'p.id <> ?', $productId )->execute();
+	public function getActiveById($iProductId) {
+		if((int) $iProductId) {
+			$oResult = $this->createQuery('p')->where( 'p.id = ?', $iProductId );
+			return $oResult->fetchOne();
+		}
+		return false;
+	}
+
+	public function getProductsForProductLink($iProductId) {
+		if((int) $iProductId) {
+			$oResult = $this->createQuery('p')->where( 'p.id <> ?', $iProductId )->execute();
 		} else {
 			$oResult = $this->createQuery('p')->execute();
 		}

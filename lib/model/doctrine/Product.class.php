@@ -12,5 +12,11 @@
  */
 class Product extends BaseProduct
 {
-
+	/**
+	 * Для роутера (возвращает алиас с id
+	 * @return string
+	 */
+	public function getAliasId() {
+		return $this->getAlias() . "-" . $this->getId();
+	}
 }

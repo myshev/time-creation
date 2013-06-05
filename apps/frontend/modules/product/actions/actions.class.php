@@ -43,4 +43,11 @@ class productActions extends sfActions
 
 		$this->oProducts				= ProductSubcategory2ProductTable::getInstance()->getBySubcategory($this->oSubcategory->getId());
 	}
+
+	public function executeProductDetail(sfWebRequest $request) {
+		$productId = substr($request->getParameter('alias_id'), strrpos($request->getParameter('alias_id'), '-') + 1, strlen($request->getParameter('alias_id')) - strrpos($request->getParameter('alias_id'), '-'));
+		$this->oProduct		= ProductTable::getInstance()->getActiveById($productId);
+
+		$this->forward404Unless($this->oProduct);
+	}
 }
