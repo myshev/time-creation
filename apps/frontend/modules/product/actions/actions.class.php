@@ -12,7 +12,6 @@ class productActions extends sfActions
 {
 	/**
 	 * Executes index action
-	 *
 	 * @param sfRequest $request A request object
 	 */
 	public function executeIndex(sfWebRequest $request) {
@@ -38,7 +37,6 @@ class productActions extends sfActions
 													$request->getParameter('subcategory_alias')
 											);
 		$this->forward404Unless($this->oSubcategory);
-
 		$this->oProducts				= ProductSubcategory2ProductTable::getInstance()->getBySubcategory($this->oSubcategory->getId());
 	}
 
@@ -49,7 +47,6 @@ class productActions extends sfActions
 	public function executeProductDetail(sfWebRequest $request) {
 		$productId = substr($request->getParameter('alias_id'), strrpos($request->getParameter('alias_id'), '-') + 1, strlen($request->getParameter('alias_id')) - strrpos($request->getParameter('alias_id'), '-'));
 		$this->oProduct		= ProductTable::getInstance()->getActiveById($productId);
-
 		$this->forward404Unless($this->oProduct);
 	}
 }
