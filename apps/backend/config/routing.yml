@@ -58,7 +58,7 @@ news:
 # default rules
 homepage:
   url:   /
-  param: { module: news, action: index }
+  param: { module: product, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules

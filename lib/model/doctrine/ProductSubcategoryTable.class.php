@@ -25,4 +25,12 @@ class ProductSubcategoryTable extends Doctrine_Table
 		}
 		return $choices;
 	}
+
+	public function getActiveList() {
+		return $this->createQuery('ps')
+			->leftJoin('ps.ProductCategory pc')
+			->andWhere('ps.is_active = ?', 1)
+			->andWhere('pc.is_active = ?', 1)
+			->execute();
+	}
 }

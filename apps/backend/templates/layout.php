@@ -18,18 +18,18 @@
 			<?php if ($sf_user->isAuthenticated()) { ?>
 				<div id="menu">
 					<ul class="vert-nav">
-						<li><span><?=__('Users list')?></span>
-							<ul>
-								<li><?php echo link_to(__('Users list'), 		'sf_guard_user') ?></li>
-								<li><?php echo link_to(__('User group'), 		'sf_guard_group') ?></li>
-								<li><?php echo link_to(__('User permission'), 	'sf_guard_permission') ?></li>
-							</ul>
-						</li>
 						<li><span><?=__('Products')?></span>
 							<ul>
 								<li><?php echo link_to(__('Products'), 'product') ?></li>
 								<li><?php echo link_to(__('Products category'), 'product_category') ?></li>
 								<li><?php echo link_to(__('Products subcategory'), 'product_subcategory') ?></li>
+							</ul>
+						</li>
+						<li><span><?=__('Users list')?></span>
+							<ul>
+								<li><?php echo link_to(__('Users list'), 		'sf_guard_user') ?></li>
+								<li><?php echo link_to(__('User group'), 		'sf_guard_group') ?></li>
+								<li><?php echo link_to(__('User permission'), 	'sf_guard_permission') ?></li>
 							</ul>
 						</li>
 						<li><span><?=__('Lists');?></span>

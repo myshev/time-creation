@@ -16,4 +16,11 @@ class ProductCategoryTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('ProductCategory');
     }
+
+	public function getActiveList() {
+		return $this->createQuery('pc')
+			->leftJoin('pc.ProductSubcategory ps')
+			->andWhere('pc.is_active = ?', 1)
+			->execute();
+	}
 }

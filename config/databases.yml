@@ -15,3 +15,11 @@ dev:
       dsn:      mysql:host=78.24.217.78;dbname=timecreation
       username: timecreation
       password: dsYE954KKD5u8mZM
+
+cache:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=78.24.217.78;dbname=timecreation
+      username: timecreation
+      password: dsYE954KKD5u8mZM
