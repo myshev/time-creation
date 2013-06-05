@@ -304,6 +304,10 @@
         <source>Lists</source>
         <target>Списки</target>
       </trans-unit>
+      <trans-unit id="76">
+        <source>Link product 2 product</source>
+        <target>С этим товаром так же покупают</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
