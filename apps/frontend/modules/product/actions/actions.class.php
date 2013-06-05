@@ -21,7 +21,6 @@ class productActions extends sfActions
 
 	/**
 	 * Детальная страница категории
-	 *
 	 * @param sfWebRequest $request
 	 */
 	public function executeShowCategory(sfWebRequest $request) {
@@ -31,7 +30,6 @@ class productActions extends sfActions
 
 	/**
 	 * Детальная страница подкатегории
-	 *
 	 * @param sfWebRequest $request
 	 */
 	public function executeShowSubcategory(sfWebRequest $request) {
@@ -44,6 +42,10 @@ class productActions extends sfActions
 		$this->oProducts				= ProductSubcategory2ProductTable::getInstance()->getBySubcategory($this->oSubcategory->getId());
 	}
 
+	/**
+	 * Детальная товара
+	 * @param sfWebRequest $request
+	 */
 	public function executeProductDetail(sfWebRequest $request) {
 		$productId = substr($request->getParameter('alias_id'), strrpos($request->getParameter('alias_id'), '-') + 1, strlen($request->getParameter('alias_id')) - strrpos($request->getParameter('alias_id'), '-'));
 		$this->oProduct		= ProductTable::getInstance()->getActiveById($productId);
