@@ -17,16 +17,31 @@
 			</div>
 			<?php if ($sf_user->isAuthenticated()) { ?>
 				<div id="menu">
-					<ul>
+					<ul class="vert-nav">
+						<li><span><?=__('Users list')?></span>
+							<ul>
+								<li><?php echo link_to(__('Users list'), 		'sf_guard_user') ?></li>
+								<li><?php echo link_to(__('User group'), 		'sf_guard_group') ?></li>
+								<li><?php echo link_to(__('User permission'), 	'sf_guard_permission') ?></li>
+							</ul>
+						</li>
+						<li><span><?=__('Products')?></span>
+							<ul>
+								<li><?php echo link_to(__('Products'), 'product') ?></li>
+								<li><?php echo link_to(__('Products category'), 'product_category') ?></li>
+								<li><?php echo link_to(__('Products subcategory'), 'product_subcategory') ?></li>
+							</ul>
+						</li>
+						<li><span><?=__('Lists');?></span>
+							<ul>
+								<li><?php echo link_to(__('Manufacturer List'), 'manufacturer') ?></li>
+							</ul>
+						</li>
 						<li><?php echo link_to(__('News list'), 'news') ?></li>
 						<li><?php echo link_to(__('Stat pages'), 'stat_page') ?></li>
-						<li><?php echo link_to(__('Users list'), 'sf_guard_user') ?></li>
-						<li><?php echo link_to(__('Products'), 'product') ?></li>
-						<li><?php echo link_to(__('Products category'), 'product_category') ?></li>
-						<li><?php echo link_to(__('Products subcategory'), 'product_subcategory') ?></li>
-						<li><?php echo link_to(__('Manufacturer'), 'manufacturer') ?></li>
 						<li><?php echo link_to(__('Logout'), 'sf_guard_signout') ?></li>
 					</ul>
+					<div class="clear"></div>
 				</div>
 			<?php }?>
 			<div id="content">

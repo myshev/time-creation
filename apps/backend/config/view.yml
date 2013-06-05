@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [main.css, /csDoctrineActAsSortablePlugin/css/sortable.css]
 
-  javascripts:    [ckeditor/ckeditor, /sfCkPlugin/js/sfCkPlugin.js, ckfinder/ckfinder]
+  javascripts:    [jquery-1.9.1.min.js, backend.js, ckeditor/ckeditor, /sfCkPlugin/js/sfCkPlugin.js, ckfinder/ckfinder]
 
   has_layout:     true
   layout:         layout

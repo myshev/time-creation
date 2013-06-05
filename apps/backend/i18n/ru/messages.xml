@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="EN" target-language="ru" datatype="plaintext" original="messages" date="2013-05-28T16:38:56Z" product-name="messages">
+  <file source-language="EN" target-language="ru" datatype="plaintext" original="messages" date="2013-06-05T10:35:54Z" product-name="messages">
     <header/>
     <body>
       <trans-unit id="1">
@@ -240,34 +240,70 @@
         <source>New Product category</source>
         <target>Новая категория товаров</target>
       </trans-unit>
-	  <trans-unit id="60">
-		<source>Product subcategory List</source>
-		<target>Подкатегории товаров</target>
-	  </trans-unit>
-	  <trans-unit id="61">
-		<source>Manufacturer</source>
-		<target>Производитель</target>
-	  </trans-unit>
-	  <trans-unit id="62">
-		<source>Manufacturer List</source>
-		<target>Производители</target>
-	  </trans-unit>
-	  <trans-unit id="63">
-		<source>New Manufacturer</source>
-		<target>Новый производитель</target>
-	  </trans-unit>
-	  <trans-unit id="64">
-		<source>Edit Manufacturer</source>
-		<target>Редактирование производителя</target>
-	  </trans-unit>
-	  <trans-unit id="65">
-		<source>Quantity in stock</source>
-		<target>Кол-во на складе</target>
-	  </trans-unit>
-	  <trans-unit id="66">
-		<source>Cost</source>
-		<target>Цена</target>
-	  </trans-unit>
+      <trans-unit id="60">
+        <source>Product subcategory List</source>
+        <target>Подкатегории товаров</target>
+      </trans-unit>
+      <trans-unit id="61">
+        <source>Manufacturer</source>
+        <target>Производитель</target>
+      </trans-unit>
+      <trans-unit id="62">
+        <source>Manufacturer List</source>
+        <target>Производители</target>
+      </trans-unit>
+      <trans-unit id="63">
+        <source>New Manufacturer</source>
+        <target>Новый производитель</target>
+      </trans-unit>
+      <trans-unit id="64">
+        <source>Edit Manufacturer</source>
+        <target>Редактирование производителя</target>
+      </trans-unit>
+      <trans-unit id="65">
+        <source>Quantity in stock</source>
+        <target>Кол-во на складе</target>
+      </trans-unit>
+      <trans-unit id="66">
+        <source>Cost</source>
+        <target>Цена</target>
+      </trans-unit>
+      <trans-unit id="67">
+        <source>User group</source>
+        <target>Группы пользователей</target>
+      </trans-unit>
+      <trans-unit id="68">
+        <source>User permission</source>
+        <target>Права пользователей</target>
+      </trans-unit>
+      <trans-unit id="69">
+        <source>Group list</source>
+        <target>Группы пользователей</target>
+      </trans-unit>
+      <trans-unit id="70">
+        <source>Editing Group "%%name%%"</source>
+        <target>Редактирование группы "%%name%%"</target>
+      </trans-unit>
+      <trans-unit id="71">
+        <source>New Group</source>
+        <target>Новая группа</target>
+      </trans-unit>
+      <trans-unit id="72">
+        <source>Permission list</source>
+        <target>Права пользователей</target>
+      </trans-unit>
+      <trans-unit id="73">
+        <source>Editing Permission "%%name%%"</source>
+        <target>Редактирование прав "%%name%%"</target>
+      </trans-unit>
+      <trans-unit id="74">
+        <source>New Permission</source>
+        <target>Добавление прав пользователей</target>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>Lists</source>
+        <target>Списки</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
