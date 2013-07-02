@@ -16,37 +16,37 @@ Doctrine_Manager::getInstance()->bindComponent('Product', 'doctrine');
  * @property integer $cost
  * @property integer $manufacturer_id
  * @property string $alias
- * @property Doctrine_Collection $ProductSubcategory
+ * @property integer $product_subcategory_id
  * @property Manufacturer $Manufacturer
- * @property Doctrine_Collection $ProductSubcategory2Product
+ * @property ProductSubcategory $ProductSubcategory
  * @property Doctrine_Collection $Product2Product
  * 
- * @method string              getName()                       Returns the current record's "name" value
- * @method string              getAnnounce()                   Returns the current record's "announce" value
- * @method clob                getDescription()                Returns the current record's "description" value
- * @method string              getImage()                      Returns the current record's "image" value
- * @method boolean             getIsActive()                   Returns the current record's "is_active" value
- * @method integer             getQuantityInStock()            Returns the current record's "quantity_in_stock" value
- * @method integer             getCost()                       Returns the current record's "cost" value
- * @method integer             getManufacturerId()             Returns the current record's "manufacturer_id" value
- * @method string              getAlias()                      Returns the current record's "alias" value
- * @method Doctrine_Collection getProductSubcategory()         Returns the current record's "ProductSubcategory" collection
- * @method Manufacturer        getManufacturer()               Returns the current record's "Manufacturer" value
- * @method Doctrine_Collection getProductSubcategory2Product() Returns the current record's "ProductSubcategory2Product" collection
- * @method Doctrine_Collection getProduct2Product()            Returns the current record's "Product2Product" collection
- * @method Product             setName()                       Sets the current record's "name" value
- * @method Product             setAnnounce()                   Sets the current record's "announce" value
- * @method Product             setDescription()                Sets the current record's "description" value
- * @method Product             setImage()                      Sets the current record's "image" value
- * @method Product             setIsActive()                   Sets the current record's "is_active" value
- * @method Product             setQuantityInStock()            Sets the current record's "quantity_in_stock" value
- * @method Product             setCost()                       Sets the current record's "cost" value
- * @method Product             setManufacturerId()             Sets the current record's "manufacturer_id" value
- * @method Product             setAlias()                      Sets the current record's "alias" value
- * @method Product             setProductSubcategory()         Sets the current record's "ProductSubcategory" collection
- * @method Product             setManufacturer()               Sets the current record's "Manufacturer" value
- * @method Product             setProductSubcategory2Product() Sets the current record's "ProductSubcategory2Product" collection
- * @method Product             setProduct2Product()            Sets the current record's "Product2Product" collection
+ * @method string              getName()                   Returns the current record's "name" value
+ * @method string              getAnnounce()               Returns the current record's "announce" value
+ * @method clob                getDescription()            Returns the current record's "description" value
+ * @method string              getImage()                  Returns the current record's "image" value
+ * @method boolean             getIsActive()               Returns the current record's "is_active" value
+ * @method integer             getQuantityInStock()        Returns the current record's "quantity_in_stock" value
+ * @method integer             getCost()                   Returns the current record's "cost" value
+ * @method integer             getManufacturerId()         Returns the current record's "manufacturer_id" value
+ * @method string              getAlias()                  Returns the current record's "alias" value
+ * @method integer             getProductSubcategoryId()   Returns the current record's "product_subcategory_id" value
+ * @method Manufacturer        getManufacturer()           Returns the current record's "Manufacturer" value
+ * @method ProductSubcategory  getProductSubcategory()     Returns the current record's "ProductSubcategory" value
+ * @method Doctrine_Collection getProduct2Product()        Returns the current record's "Product2Product" collection
+ * @method Product             setName()                   Sets the current record's "name" value
+ * @method Product             setAnnounce()               Sets the current record's "announce" value
+ * @method Product             setDescription()            Sets the current record's "description" value
+ * @method Product             setImage()                  Sets the current record's "image" value
+ * @method Product             setIsActive()               Sets the current record's "is_active" value
+ * @method Product             setQuantityInStock()        Sets the current record's "quantity_in_stock" value
+ * @method Product             setCost()                   Sets the current record's "cost" value
+ * @method Product             setManufacturerId()         Sets the current record's "manufacturer_id" value
+ * @method Product             setAlias()                  Sets the current record's "alias" value
+ * @method Product             setProductSubcategoryId()   Sets the current record's "product_subcategory_id" value
+ * @method Product             setManufacturer()           Sets the current record's "Manufacturer" value
+ * @method Product             setProductSubcategory()     Sets the current record's "ProductSubcategory" value
+ * @method Product             setProduct2Product()        Sets the current record's "Product2Product" collection
  * 
  * @package    manymoney
  * @subpackage model
@@ -135,24 +135,29 @@ abstract class BaseProduct extends sfDoctrineRecord
              'comment' => 'Алиас',
              'length' => 255,
              ));
+        $this->hasColumn('product_subcategory_id', 'integer', null, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'comment' => 'ID подкатегории',
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('ProductSubcategory', array(
-             'refClass' => 'ProductSubcategory2Product',
-             'local' => 'product_id',
-             'foreign' => 'product_subcategory_id'));
-
         $this->hasOne('Manufacturer', array(
              'local' => 'manufacturer_id',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
 
-        $this->hasMany('ProductSubcategory2Product', array(
-             'local' => 'id',
-             'foreign' => 'product_id'));
+        $this->hasOne('ProductSubcategory', array(
+             'local' => 'product_subcategory_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('Product2Product', array(
              'local' => 'id',

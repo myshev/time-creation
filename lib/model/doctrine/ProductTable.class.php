@@ -38,6 +38,6 @@ class ProductTable extends Doctrine_Table
 			}
 			return $choices;
 		}
-		return false;
+		return array();
 	}
 }

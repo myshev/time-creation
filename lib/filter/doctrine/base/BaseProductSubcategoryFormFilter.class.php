@@ -23,7 +23,6 @@ abstract class BaseProductSubcategoryFormFilter extends BaseFormFilterDoctrine
       'created_at'          => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'updated_at'          => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'position'            => new sfWidgetFormFilterInput(),
-      'product_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Product')),
     ));
 
     $this->setValidators(array(
@@ -37,7 +36,6 @@ abstract class BaseProductSubcategoryFormFilter extends BaseFormFilterDoctrine
       'created_at'          => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at'          => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'position'            => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'product_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Product', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('product_subcategory_filters[%s]');
@@ -47,24 +45,6 @@ abstract class BaseProductSubcategoryFormFilter extends BaseFormFilterDoctrine
     $this->setupInheritance();
 
     parent::setup();
-  }
-
-  public function addProductListColumnQuery(Doctrine_Query $query, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $query
-      ->leftJoin($query->getRootAlias().'.ProductSubcategory2Product ProductSubcategory2Product')
-      ->andWhereIn('ProductSubcategory2Product.product_id', $values)
-    ;
   }
 
   public function getModelName()
@@ -86,7 +66,6 @@ abstract class BaseProductSubcategoryFormFilter extends BaseFormFilterDoctrine
       'created_at'          => 'Date',
       'updated_at'          => 'Date',
       'position'            => 'Number',
-      'product_list'        => 'ManyKey',
     );
   }
 }

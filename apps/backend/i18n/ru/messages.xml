@@ -308,6 +308,10 @@
         <source>Link product 2 product</source>
         <target>С этим товаром так же покупают</target>
       </trans-unit>
+      <trans-unit id="77">
+        <source>Product subcategory</source>
+        <target>Подкатегория продукта</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

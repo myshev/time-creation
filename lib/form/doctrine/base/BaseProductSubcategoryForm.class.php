@@ -26,7 +26,6 @@ abstract class BaseProductSubcategoryForm extends BaseFormDoctrine
       'created_at'          => new sfWidgetFormDateTime(),
       'updated_at'          => new sfWidgetFormDateTime(),
       'position'            => new sfWidgetFormInputText(),
-      'product_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Product')),
     ));
 
     $this->setValidators(array(
@@ -41,7 +40,6 @@ abstract class BaseProductSubcategoryForm extends BaseFormDoctrine
       'created_at'          => new sfValidatorDateTime(),
       'updated_at'          => new sfValidatorDateTime(),
       'position'            => new sfValidatorInteger(array('required' => false)),
-      'product_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Product', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -63,62 +61,6 @@ abstract class BaseProductSubcategoryForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'ProductSubcategory';
-  }
-
-  public function updateDefaultsFromObject()
-  {
-    parent::updateDefaultsFromObject();
-
-    if (isset($this->widgetSchema['product_list']))
-    {
-      $this->setDefault('product_list', $this->object->Product->getPrimaryKeys());
-    }
-
-  }
-
-  protected function doSave($con = null)
-  {
-    $this->saveProductList($con);
-
-    parent::doSave($con);
-  }
-
-  public function saveProductList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['product_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (null === $con)
-    {
-      $con = $this->getConnection();
-    }
-
-    $existing = $this->object->Product->getPrimaryKeys();
-    $values = $this->getValue('product_list');
-    if (!is_array($values))
-    {
-      $values = array();
-    }
-
-    $unlink = array_diff($existing, $values);
-    if (count($unlink))
-    {
-      $this->object->unlink('Product', array_values($unlink));
-    }
-
-    $link = array_diff($values, $existing);
-    if (count($link))
-    {
-      $this->object->link('Product', array_values($link));
-    }
   }
 
 }

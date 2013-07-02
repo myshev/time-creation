@@ -48,7 +48,7 @@ class ProductForm extends BaseProductForm
 
 		$this->validatorSchema['image_delete'] = new sfValidatorPass();
 
-		$this->widgetSchema['product_subcategory_list'] = new sfWidgetFormChoice (array(
+		/*$this->widgetSchema['product_subcategory_list'] = new sfWidgetFormChoice (array(
 			'choices'			=> ProductSubcategoryTable::getInstance()->retrieveProductSubcategoryList(),
 			'multiple'			=> true,
 			'renderer_class'	=> 'sfWidgetFormSelectDoubleList',
@@ -58,7 +58,7 @@ class ProductForm extends BaseProductForm
 				'associated_first'		=> false
 			)
 		));
-		$this->validatorSchema['product_subcategory_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'ProductSubcategory', 'required' => true));
+		$this->validatorSchema['product_subcategory_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'ProductSubcategory', 'required' => true));*/
 
 	/*	$this->setWidget('product_subcategory_list', new sfWidgetFormDoctrineChoiceGrouped(array(
 			'model' => 'ProductSubcategory',
@@ -73,18 +73,26 @@ class ProductForm extends BaseProductForm
 			'multiple' => true,
 		));*/
 
-		$this->widgetSchema['link_product_2_product'] = new sfWidgetFormChoice (array(
-			'choices'			=> ProductTable::getInstance()->getProductsForProductLink($this->getObject()->getId()),
-			'multiple'			=> true,
-			'renderer_class'	=> 'sfWidgetFormSelectDoubleList',
-			'renderer_options'	=> array(
-				'label_associated'		=> 'Связанные',
-				'label_unassociated'	=> 'Доступные',
-				'associated_first'		=> false
-			)
-		));
-		$this->validatorSchema['link_product_2_product'] = new sfValidatorPass();
-		$this->getWidget('link_product_2_product')->setDefault(Product2ProductTable::getInstance()->getLinkedProducts($this->getObject()->getId()));
+
+//		if($oProducts = ProductTable::getInstance()->getProductsForProductLink($this->getObject()->getId())) {
+
+			$this->widgetSchema['link_product_2_product'] = new sfWidgetFormChoice (array(
+				'choices'			=> ProductTable::getInstance()->getProductsForProductLink($this->getObject()->getId()),
+				'multiple'			=> true,
+				'renderer_class'	=> 'sfWidgetFormSelectDoubleList',
+				'renderer_options'	=> array(
+					'label_associated'		=> 'Связанные',
+					'label_unassociated'	=> 'Доступные',
+					'associated_first'		=> false
+				)
+			));
+			$this->validatorSchema['link_product_2_product'] = new sfValidatorPass();
+			$this->getWidget('link_product_2_product')->setDefault(Product2ProductTable::getInstance()->getLinkedProducts($this->getObject()->getId()));
+//		} else {
+//			$this->widgetSchema['link_product_2_product'] = new sfWidgetFormInputHidden();
+//			$this->validatorSchema['link_product_2_product'] = new sfValidatorPass();
+//		}
+
 
 		$this->removeFields();
 	}

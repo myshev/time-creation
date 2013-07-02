@@ -255,52 +255,26 @@ Product:
       notnull: true
       autoincrement: false
       comment: 'Алиас'
+    product_subcategory_id:
+      type: integer
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      comment: 'ID подкатегории'
   relations:
-    ProductSubcategory:
-      class: ProductSubcategory
-      refClass: ProductSubcategory2Product
-      local: product_id
-      foreign: product_subcategory_id
     Manufacturer:
       local: manufacturer_id
       foreign: id
       type: one
       class: Manufacturer
       onDelete: SET NULL
-
-ProductSubcategory2Product:
-  connection: doctrine
-  comment: 'Связка продуктов и подкатегорий'
-  tableName: product_subcategory2product
-  actAs:
-    Timestampable: ~
-  columns:
-    product_id:
-      type: integer(20)
-      fixed: false
-      unsigned: false
-      primary: false
-      autoincrement: false
-      comment: 'Продукт'
-    product_subcategory_id:
-      type: integer(20)
-      fixed: false
-      unsigned: false
-      primary: false
-      autoincrement: false
-      comment: 'Подкатегория'
-  relations:
-    Product:
-      local: product_id
-      foreign: id
-      type: one
-      class: Product
-      onDelete: CASCADE
     ProductSubcategory:
-      local: product_subcategory_id
-      foreign: id
       type: one
+      local: product_subcategory_id
       class: ProductSubcategory
+      foreign: id
       onDelete: CASCADE
 
 Manufacturer:
