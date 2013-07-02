@@ -37,7 +37,7 @@ class productActions extends sfActions
 													$request->getParameter('subcategory_alias')
 											);
 		$this->forward404Unless($this->oSubcategory);
-		$this->oProducts				= ProductSubcategory2ProductTable::getInstance()->getBySubcategory($this->oSubcategory->getId());
+		$this->oProducts				= ProductTable::getInstance()->getBySubcategory($this->oSubcategory->getId());
 	}
 
 	/**

@@ -40,4 +40,14 @@ class ProductTable extends Doctrine_Table
 		}
 		return array();
 	}
+
+	public function getBySubcategory($iSubcategoryId) {
+		if((int) $iSubcategoryId > 0) {
+			$oResult	= $this->createQuery('p')
+							->where('p.product_subcategory_id = ?', $iSubcategoryId)
+							->andWhere('p.is_active = ?', 1);
+			return $oResult->execute();
+		}
+		return false;
+	}
 }
