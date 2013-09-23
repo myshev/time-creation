@@ -16,6 +16,6 @@ class defaultActions extends sfActions
 	 * @param sfRequest $request A request object
 	 */
 	public function executeIndex(sfWebRequest $request) {
-
+		$this->setLayout('layout_tmp');
 	}
 }

@@ -1,0 +1,1 @@
+<img src="/images/rec.jpg" width="100%" />
